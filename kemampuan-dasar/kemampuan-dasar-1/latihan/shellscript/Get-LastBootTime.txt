@@ -1,0 +1,47 @@
+
+PS C:\Users\User> Get-WmiObject -Class Win32_OperatingSystem –ComputerName localhost |
+Select-Object -Property CSName,@{n=”Last Booted”;
+e={[Management.ManagementDateTimeConverter]::ToDateTime($_.LastBootUpTime)
+Missing closing '}' in statement block or type definition.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : MissingEndCurlyBrace
+ 
+
+PS C:\Users\User> Get-WmiObject -Class Win32_OperatingSystem –ComputerName localhost |
+Select-Object -Property CSName,@{n=”Last Booted”;
+e={[Management.ManagementDateTimeConverter]::ToDateTime($_.LastBootUpTime)}
+The hash literal was incomplete.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordEx 
+   ception
+    + FullyQualifiedErrorId : IncompleteHashLiteral
+ 
+
+PS C:\Users\User> Get-WmiObject -Class Win32_OperatingSystem –ComputerName localhost |
+Select-Object -Property CSName,@{n=”Last Booted”;
+e={[Management.ManagementDateTimeConverter]::ToDateTime($_.LastBootUpTime)}}
+
+CSName          Last Booted        
+------          -----------        
+DESKTOP-PE880ML 18/08/2022 08:54:15
+
+
+
+PS C:\Users\User> G:\QS\kemampuan-dasar\kemampuan-dasar-1\latihan\Get-LastBootTime.ps1
+
+CSName          Last Booted        
+------          -----------        
+DESKTOP-PE880ML 18/08/2022 08:54:15
+
+
+
+PS C:\Users\User> help G:\QS\kemampuan-dasar\kemampuan-dasar-1\latihan\Get-LastBootTime.ps1
+Get-LastBootTime.ps1 
+
+
+PS C:\Users\User> G:\QS\kemampuan-dasar\kemampuan-dasar-1\latihan\Untitled1.ps1
+
+CSName          Last Booted        
+------          -----------        
+DESKTOP-PE880ML 18/08/2022 08:54:15
+
+

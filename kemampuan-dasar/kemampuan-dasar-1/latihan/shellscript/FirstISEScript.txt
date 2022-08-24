@@ -1,0 +1,12 @@
+PS C:\Users\User> G:\QS\kemampuan-dasar\kemampuan-dasar-1\latihan\shellscript\FirstISEScript.ps1
+Hello, Guru99!
+
+PS C:\Users\User> G:\QS\kemampuan-dasar\kemampuan-dasar-1\latihan\shellscript\FirstISEScript.ps1
+
+CSName          FreeVirtualMemory
+------          -----------------
+DESKTOP-PE880ML           3921628
+
+
+
+PS C:\Users\User> 
