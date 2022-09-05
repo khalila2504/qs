@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import psycopg2
 
 app = Flask(__name__)
@@ -45,11 +45,50 @@ def detail(buah_id):
     curs = conn.cursor()
     query = f"select * from buah where id = {buah_id}"
     curs.execute(query)
-    data = curs.fetchall()
+    data = curs.fetchone()
     curs.close()
     conn.close()
     print(data)
-    return""
+    return render_template("detail.html", context=data)
+
+@app.route("/delete/<buah_id>")
+def delete(buah_id):
+    conn = psycopg2.connect(
+        host="localhost",
+        database="contoh",
+        user="postgres",
+        password="hda182526"
+    )
+    curs = conn.cursor()
+    query = f"delete from buah where id = {buah_id}"
+    curs.execute(query)
+    conn.commit()
+    curs.close()
+    conn.close()
+    return redirect("/")
+
+@app.route("/update/<buah_id>")
+def update(buah_id):
+    conn = psycopg2.connect(
+        host="localhost",
+        database="contoh",
+        user="postgres",
+        password="hda182526"
+    )
+    curs = conn.cursor()
+    
+    namaLama = 'apel'
+    namaBaru = 'alpukat'
+    detailBaru = 'sepet'
+
+    query = f"update buah set nama='{namaBaru}', detail='{detailBaru}' where nama ='{namaLama}'"
+    curs.execute(query)
+    conn.commit()
+    print("data masuk")
+
+    return redirect("/")
+
+
 
 if __name__ == "__main__":
     app.run()
