@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    
     conn = psycopg2.connect(
         host="localhost",
         database="contoh",
@@ -26,7 +27,7 @@ def index():
         # print(20*"=")
     
     print(request.method)
-    query = f"select * from buah"
+    query = f"select * from buah order by id desc"
     curs.execute(query)
     data = curs.fetchall()
     curs.close()
@@ -67,7 +68,7 @@ def delete(buah_id):
     conn.close()
     return redirect("/")
 
-@app.route("/update/<buah_id>")
+@app.route("/update/<buah_id>", methods=["GET", "POST"])
 def update(buah_id):
     conn = psycopg2.connect(
         host="localhost",
@@ -76,19 +77,23 @@ def update(buah_id):
         password="hda182526"
     )
     curs = conn.cursor()
-    
-    namaLama = 'apel'
-    namaBaru = 'alpukat'
-    detailBaru = 'sepet'
-
-    query = f"update buah set nama='{namaBaru}', detail='{detailBaru}' where nama ='{namaLama}'"
+    if request.method == "POST":
+        nama = request.form.get("nama")
+        detail = request.form.get("detail")
+        query = f"update buah set nama ='{nama}', detail = '{detail}' where id = {buah_id}"
+        curs.execute(query)
+        conn.commit()
+        return redirect("/")
+    # namaLama = 'ael'
+    # namaBaru = 'alpukat'
+    # detailBaru = 'sepet'
+    query = f"select * from buah where id = {buah_id}"
     curs.execute(query)
-    conn.commit()
-    print("data masuk")
-
-    return redirect("/")
-
-
+    data = curs.fetchone()
+    # conn.commit()
+    curs.close
+    conn.close
+    return render_template("update.html", context=data)
 
 if __name__ == "__main__":
     app.run()
