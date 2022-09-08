@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cape</title>
+    <style>
+        table {
+  font-family: arial, sans-serif;
+  border-collapse:separate;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color:burlywood;
+}
+</style>
+
+</head>
+<body>
+    <div class="container my-5"> 
+        <h1>ketik 1 jika km cape</h1>
+        <form action="" method="post">
+            <label for="exampleFormControlInput1" class="form-label">nama</label>
+            <input class="form-control" name="nama" type="text" required>
+            <br>
+            <br>
+            <label for="exampleFormControlInput1" class="form-label">masalah idup</label>
+            <input class="form-control" name="detail" type="text" required>
+            <button type="submit">ok</button>
+
+        </form>
+        
+        <hr>
+        <h1>List Data Org Cape</h1>
+        <br> 
+        <table>
+            <tr>
+                <th>id</th>
+                <th>nama</th>
+                <th>actions</th>
+            </tr>
+            {% for d in context %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{d[1]}}</td>
+                <td>
+                    <a href="/detail/{{d[0]}}">
+                        <button class="btn btn-info">detail</button>
+                    </a>
+                    <a href="/update/{{d[0]}}">
+                        <button class="btn btn-warning">update</button>
+                    </a>
+                    <a href="/delete/{{d[0]}}">
+                        <button class="btn btn-danger">delete</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+            
+    
+    </div>
+</body>
+</html>
