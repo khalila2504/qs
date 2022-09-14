@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cape</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <style>
+        
+        
         table {
   font-family: arial, sans-serif;
   border-collapse:separate;
@@ -19,44 +22,111 @@ td, th {
 }
 
 tr:nth-child(even) {
-  background-color:burlywood;
+  background-color:cadetblue;
 }
 </style>
 
 </head>
 <body>
     <div class="container my-5"> 
-        <h1>ketik 1 jika km cape</h1>
+       
+        <h1 style="text-align:center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Binomial Nomenclatur</h1>
+        <br>
         <form action="" method="post">
-            <label for="exampleFormControlInput1" class="form-label">nama</label>
-            <input class="form-control" name="nama" type="text" required>
+            <div class="row">
+                <div class="col">
+                    <label for="exampleFormControlInput1" class="form-label">Nama</label>
+                    <br>
+                    <input class="form-control" name="nama" type="text" required>
+
+                </div>
+                <div class="col">
+                    <label for="exampleFormControlInput1" class="form-label">Kingdom</label>
+                    <br>
+                    <input class="form-control" name="kingdom" type="text" required>
+                    
+                </div>
+            
+                <div class="col">
+                    <label for="exampleFormControlInput1" class="form-label">Filum</label>
+                    <br>
+                    <input class="form-control" name="filum" type="text" required>
+
+                </div>
+                <div class="col">
+                    <label for="exampleFormControlInput1" class="form-label">Kelas</label>
+                    <br>
+                    <input class="form-control" name="kelas" type="text" required>
+                </div>
+            </div>
             <br>
-            <br>
-            <label for="exampleFormControlInput1" class="form-label">masalah idup</label>
-            <input class="form-control" name="detail" type="text" required>
-            <button type="submit">ok</button>
+            <div class="row">
+                <div class="col">
+                    <label for="exampleFormControlInput1" class="form-label">Ordo</label>
+                    <br>
+                    <input class="form-control" name="ordo" type="text" required>
+                    
+                </div>
+                <div class="col">
+                    <label for="exampleFormControlInput1" class="form-label">Famili</label>
+                    <br>
+                    <input class="form-control" name="famili" type="text" required>
+
+                </div>
+                <div class="col">
+                    <label for="exampleFormControlInput1" class="form-label">Genus</label>
+                    <br>
+                    <input class="form-control" name="genus" type="text" required>
+
+                </div>
+                <div class="col">
+                    <label for="exampleFormControlInput1" class="form-label">Spesies</label>
+                    <br>
+                    <input class="form-control" name="spesies" type="text" required>
+
+                </div>
+            </div>
+     
+           <br>
+          
+            <button type="submit" class="btn btn-primary">Add</button>
 
         </form>
         
         <hr>
-        <h1>List Data Org Cape</h1>
         <br> 
         <table>
             <tr>
-                <th>id</th>
-                <th>nama</th>
-                <th>actions</th>
+                
+                    <th style="text-align:center ;">ID</th>
+                    <th style="text-align:center ;">NAMA</th>
+                    <th style="text-align:center ;">KINGDOM</th>
+                    <th style="text-align:center ;">FILUM</th>
+                    <th style="text-align:center ;">KELAS</th>
+                    <th style="text-align:center ;">ORDO</th>
+                    <th style="text-align:center ;">FAMILI</th>
+                    <th style="text-align:center ;">GENUS</th>
+                    <th style="text-align:center ;">SPESIES</th>
+                    <th style="text-align:center ;">edit</th>
+                
             </tr>
+          
             {% for d in context %}
             <tr>
                 <td>{{loop.index}}</td>
                 <td>{{d[1]}}</td>
+                <td>{{d[2]}}</td>
+                <td>{{d[3]}}</td>
+                <td>{{d[4]}}</td>
+                <td>{{d[5]}}</td>
+                <td>{{d[6]}}</td>
+                <td>{{d[7]}}</td>
+                <td>{{d[8]}}</td>
                 <td>
-                    <a href="/detail/{{d[0]}}">
-                        <button class="btn btn-info">detail</button>
+
                     </a>
                     <a href="/update/{{d[0]}}">
-                        <button class="btn btn-warning">update</button>
+                        <button class="btn btn-primary">update</button>
                     </a>
                     <a href="/delete/{{d[0]}}">
                         <button class="btn btn-danger">delete</button>
